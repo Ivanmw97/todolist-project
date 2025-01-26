@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.task-enter-active {
+    @apply transition duration-300 ease-out;
+  }
+  .task-leave-active {
+    @apply transition duration-300 ease-in;
+  }
+  .task-enter-from {
+    @apply opacity-0 translate-y-4;
+  }
+  .task-enter-to {
+    @apply opacity-100 translate-y-0;
+  }
+  .task-leave-from {
+    @apply opacity-100 translate-y-0;
+  }
+  .task-leave-to {
+    @apply opacity-0 translate-y-4;
+  }
