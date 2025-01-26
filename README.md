@@ -18,10 +18,10 @@ A simple and interactive TODO List application built with **Vue 3**, **Vite**, a
 ## Preview
 
 ### Light Mode:
-![Light Mode Screenshot](./assets/screenshots/light-todo-list.png)
+![Light Mode Screenshot](./src/assets/screenshots/light-todo-list.png)
 
 ### Dark Mode:
-![Dark Mode Screenshot](./assets/screenshots/dark-todo-list.png)
+![Dark Mode Screenshot](./src/assets/screenshots/dark-todo-list.png)
 
 ---
 
