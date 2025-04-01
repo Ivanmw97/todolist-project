@@ -1,28 +1,35 @@
 {
-  "name": "tailwind-project",
+  "name": "todo-list",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "uuid": "^11.0.5",
     "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@types/node": "^22.10.10",
-    "@vitejs/plugin-vue": "^5.2.1",
-    "@vue/tsconfig": "^0.7.0",
-    "autoprefixer": "10.4",
-    "gh-pages": "^6.3.0",
-    "postcss": "8.4",
-    "tailwindcss": "^3.4.17",
-    "typescript": "~5.6.2",
-    "vite": "^6.0.5",
-    "vue-tsc": "^2.2.0"
+    "@testing-library/vue": "^8.1.0",
+    "@types/node": "22.10.10",
+    "@vitejs/plugin-vue": "5.2.1",
+    "@vitest/coverage-v8": "^3.1.1",
+    "@vue/test-utils": "^2.4.6",
+    "@vue/tsconfig": "0.7.0",
+    "autoprefixer": "10.4.17",
+    "gh-pages": "6.3.0",
+    "jsdom": "^26.0.0",
+    "postcss": "8.4.35",
+    "tailwindcss": "3.4.17",
+    "typescript": "5.6.2",
+    "vite": "6.0.5",
+    "vitest": "^3.1.1",
+    "vue-tsc": "2.2.0"
   }
 }

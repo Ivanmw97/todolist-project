@@ -1,12 +1,9 @@
 <template>
-  <div class="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-4">
-    <div class="max-w-xl mx-auto bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
-
-      <div class="flex items-center justify-between mb-4">
-
-        <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-100 pt-3 mb-4">TODO List</h1>
-
-        <!-- Button to toggle between modes -->
+  <div class="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-2 sm:p-4">
+    <div class="w-full max-w-xl mx-auto bg-white dark:bg-gray-800 shadow-md rounded-lg p-3 sm:p-6">
+      <!-- Header section -->
+      <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+        <h1 class="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-100 pt-3">TODO List</h1>
         <button
           @click="toggleDarkMode"
           class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-2 rounded-full focus:outline-none items-center"
@@ -36,17 +33,17 @@
       </div>
 
       <!-- Form to add tasks -->
-      <form @submit.prevent="addTask" class="flex items-center mb-4">
+      <form @submit.prevent="addTask" class="flex flex-col sm:flex-row items-center gap-2 mb-4">
         <input
           type="text"
           v-model="state.newTask"
           placeholder="Add a new task"
-          class="flex-grow border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <!-- Priority selector -->
         <select
           v-model="state.newPriority"
-          class="w-full max-w-[150px] border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="w-full sm:w-[150px] border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="High">High</option>
           <option value="Medium" selected>Medium</option>
@@ -54,7 +51,7 @@
         </select>
         <button
           type="submit"
-          class="ml-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+          class="w-full sm:w-auto bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
         >
           Add
         </button>
@@ -65,9 +62,9 @@
         <span>Total Tasks: {{ state.tasks.length }}</span>
       </div>
 
-      <div class="flex justify-between items-center mb-4">
-       <!-- Filters -->
-        <div class="flex space-x-2">
+      <!-- Filters section -->
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-4">
+        <div class="flex flex-wrap gap-2">
           <button
             @click="setFilter('all')"
             :class="state.filter === 'all' ? activeFilterClass : defaultFilterClass"
@@ -87,14 +84,15 @@
             Completed
           </button>
         </div>
-        <!-- Filter by priority -->
-        <div class="flex items-center space-x-2">
+        
+        <!-- Priority filter -->
+        <div class="flex items-center gap-2 w-full sm:w-auto">
           <label for="priority-filter" class="text-sm font-bold text-gray-700 dark:text-gray-300">Priority:</label>
-          <div class="relative">
+          <div class="relative flex-grow sm:flex-grow-0">
             <select
               id="priority-filter"
               v-model="state.priorityFilter"
-              class="appearance-none bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-100 py-2 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
+              class="w-full appearance-none bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-100 py-2 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="all">All</option>
               <option value="High">High</option>
@@ -119,9 +117,9 @@
         <li
           v-for="task in filteredTasks"
           :key="task.id"
-          class="flex items-center justify-between bg-gray-50 dark:bg-gray-700 px-4 py-2 rounded-lg shadow-sm"
+          class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 bg-gray-50 dark:bg-gray-700 px-4 py-2 rounded-lg shadow-sm"
         >
-          <div>
+          <div class="w-full sm:w-auto">
             <span :class="{ 'line-through text-gray-400 dark:text-gray-500': task.completed }" class="block font-medium">
               {{ task.text }}
             </span>
@@ -136,10 +134,10 @@
               {{ task.priority }}
             </span>
           </div>
-          <div class="flex space-x-2">
+          <div class="flex space-x-2 w-full sm:w-auto justify-end">
             <button
               @click="toggleTask(task)"
-              class="mr-2 text-sm bg-green-500 text-white px-2 py-1 rounded-lg hover:bg-green-600"
+              class="text-sm bg-green-500 text-white px-4 py-1 rounded-lg hover:bg-green-600"
             >
               {{ task.completed ? 'Undo' : 'Complete' }}
             </button>
